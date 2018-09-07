@@ -43,7 +43,7 @@ def handle_message(message)
     short_key = ''
     loop do
       short_key = SimpleShortKey.get_key
-      break unless Dir.exist?(link_path(short_key))
+      break unless File.exist?(link_path(short_key))
     end
     begin
       f = File.new(link_path(short_key), 'w')
