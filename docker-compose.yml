@@ -15,5 +15,11 @@ services:
     ports:
       - "3000:3000"
     network_mode: bridge
+  autoremove:
+    image: ruby:2.3.1-alpine
+    volumes:
+      - links_data:/run/links/
+      - ./autoremove/app.rb:/run/app.rb:ro
+    command: ruby /run/app.rb
 volumes:
   links_data:
