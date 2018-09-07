@@ -12,6 +12,8 @@ services:
     build: ./web
     volumes:
       - links_data:/run/links/
+    ports:
+      - "3000:3000"
     network_mode: bridge
 volumes:
   links_data:
