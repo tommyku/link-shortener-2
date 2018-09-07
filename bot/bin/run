@@ -1,0 +1,1 @@
+docker run --restart=always -d -v $(pwd):/app link-shortener-bot ruby link-shortener-bot.rb

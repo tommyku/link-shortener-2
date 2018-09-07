@@ -1,0 +1,17 @@
+version: '2.2'
+
+services:
+  bot:
+    build: ./bot
+    network_mode: bridge
+    volumes:
+      - links_data:/run/links/
+      - ./bot/env.yml:/app/env.yml:ro
+    command: ruby link-shortener-bot.rb
+  web:
+    build: ./web
+    volumes:
+      - links_data:/run/links/
+    network_mode: bridge
+volumes:
+  links_data:
