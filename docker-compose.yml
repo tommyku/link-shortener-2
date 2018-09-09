@@ -8,6 +8,7 @@ services:
       - links_data:/run/links/
       - ./bot/env.yml:/app/env.yml:ro
     command: ruby link-shortener-bot.rb
+    restart: always
   web:
     build: ./web
     volumes:
@@ -15,11 +16,13 @@ services:
     ports:
       - "3000:3000"
     network_mode: bridge
+    restart: always
   autoremove:
     image: ruby:2.3.1-alpine
     volumes:
       - links_data:/run/links/
       - ./autoremove/app.rb:/run/app.rb:ro
     command: ruby /run/app.rb
+    restart: always
 volumes:
   links_data:
